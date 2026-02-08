@@ -59,12 +59,12 @@
                 <div class="preview-content slideshow-content">
                     <div class="slideshow-slides">
                         <img src="Gifs/DokiDokidict screenshot.png" alt="DokiDokiDict app" class="slideshow-slide active">
-                        <img src="Gifs/works everywheree2.gif" alt="Works everywhere demo" class="slideshow-slide">
-                        <img src="Gifs/continuous furigana.gif" alt="Furigana overlay demo" class="slideshow-slide">
-                        <img src="Gifs/def ranking.gif" alt="AI definition ranking demo" class="slideshow-slide">
-                        <img src="Gifs/Multiple Dictionaries.gif" alt="Multiple dictionaries demo" class="slideshow-slide">
-                        <img src="Gifs/Anki.gif" alt="Anki integration demo" class="slideshow-slide">
-                        <img src="Gifs/Speed.gif" alt="Speed demo" class="slideshow-slide">
+                        <video src="Gifs/works everywheree2.mp4" alt="Works everywhere demo" class="slideshow-slide" autoplay loop muted playsinline></video>
+                        <video src="Gifs/continuous furigana.mp4" alt="Furigana overlay demo" class="slideshow-slide" autoplay loop muted playsinline></video>
+                        <video src="Gifs/def ranking.mp4" alt="AI definition ranking demo" class="slideshow-slide" autoplay loop muted playsinline></video>
+                        <video src="Gifs/Multiple Dictionaries.mp4" alt="Multiple dictionaries demo" class="slideshow-slide" autoplay loop muted playsinline></video>
+                        <video src="Gifs/Anki.mp4" alt="Anki integration demo" class="slideshow-slide" autoplay loop muted playsinline></video>
+                        <video src="Gifs/Speed.mp4" alt="Speed demo" class="slideshow-slide" autoplay loop muted playsinline></video>
                     </div>
                     <div class="slideshow-dots">
                         <button class="slideshow-dot active" data-index="0" data-title="DokiDokiDict"></button>
@@ -88,7 +88,7 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <img src="Gifs/works everywheree2.gif" alt="Works everywhere demo">
+                        <video src="Gifs/works everywheree2.mp4" alt="Works everywhere demo" autoplay loop muted playsinline></video>
                     </div>
                     <h3>Works Everywhere</h3>
                     <p>Any game, any VN, any manga or book. If there's Japanese text on your screen, DokiDokiDict can read it. No text hooker required.</p>
@@ -96,7 +96,7 @@
 
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <img src="Gifs/continuous furigana.gif" alt="Continuous furigana overlay demo">
+                        <video src="Gifs/continuous furigana.mp4" alt="Continuous furigana overlay demo" autoplay loop muted playsinline></video>
                     </div>
                     <h3>Furigana Overlays</h3>
                     <p>See furigana readings above every word, in a VN, game, or anywhere. Trigger manually or let it update continuously. Skips words you already know from Anki.</p>
@@ -104,7 +104,7 @@
 
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <img src="Gifs/def ranking.gif" alt="AI definition ranking demo">
+                        <video src="Gifs/def ranking.mp4" alt="AI definition ranking demo" autoplay loop muted playsinline></video>
                     </div>
                     <h3>AI Definition Ranking</h3>
                     <p>A word like 掛ける can have dozens of meanings. Gemini reads what you're reading and puts the right one on top.</p>
@@ -112,7 +112,7 @@
 
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <img src="Gifs/Multiple Dictionaries.gif" alt="Multiple dictionaries demo">
+                        <video src="Gifs/Multiple Dictionaries.mp4" alt="Multiple dictionaries demo" autoplay loop muted playsinline></video>
                     </div>
                     <h3>Multiple Dictionaries</h3>
                     <p>Import any Yomichan dictionary and stack them in any order. Switch between dictionary profiles with a hotkey.</p>
@@ -120,7 +120,7 @@
 
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <img src="Gifs/Anki.gif" alt="Anki integration demo">
+                        <video src="Gifs/Anki.mp4" alt="Anki integration demo" autoplay loop muted playsinline></video>
                     </div>
                     <h3>Anki Integration</h3>
                     <p>Press E to export. Word, reading, definition, and the sentence you're reading.</p>
@@ -128,7 +128,7 @@
 
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <img src="Gifs/Speed.gif" alt="Speed demo">
+                        <video src="Gifs/Speed.mp4" alt="Speed demo" autoplay loop muted playsinline></video>
                     </div>
                     <h3>Optimized for Speed</h3>
                     <p>Optimized speed for lookups, furigana, and definition ranking to let you focus on your reading.</p>
@@ -178,7 +178,8 @@
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
         <button class="lightbox-arrow lightbox-prev" aria-label="Previous">&#8249;</button>
-        <img src="" alt="Enlarged preview">
+        <img src="" alt="Enlarged preview" id="lightbox-img">
+        <video src="" id="lightbox-video" autoplay loop muted playsinline></video>
         <button class="lightbox-arrow lightbox-next" aria-label="Next">&#8250;</button>
     </div>
 

@@ -62,71 +62,81 @@ document.querySelectorAll('.features-grid, .download-cards').forEach(grid => {
     });
 });
 
-// Add hover effect sounds (optional, disabled by default)
-const enableSounds = false;
-if (enableSounds) {
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('mouseenter', () => {
-            // Could add a subtle hover sound here
-        });
-    });
-}
-
-// Lightbox with arrow navigation
+// Lightbox with arrow navigation (supports both images and videos)
 const lightbox = document.getElementById('lightbox');
-const lightboxImg = lightbox.querySelector('img');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxVideo = document.getElementById('lightbox-video');
 const lightboxPrev = lightbox.querySelector('.lightbox-prev');
 const lightboxNext = lightbox.querySelector('.lightbox-next');
 
-// Build gallery from all clickable images (hero slideshow + feature cards)
-const allGalleryImages = [
+// Build gallery from all clickable media (hero slideshow + feature cards)
+const allGalleryMedia = [
     ...document.querySelectorAll('.slideshow-slide'),
-    ...document.querySelectorAll('.feature-gif img')
+    ...document.querySelectorAll('.feature-gif img, .feature-gif video')
 ];
-// Dedupe by src so the same GIF doesn't appear twice
+// Dedupe by src so the same media doesn't appear twice
 const gallerySrcs = [];
 const seen = new Set();
-allGalleryImages.forEach(img => {
-    if (!seen.has(img.src)) {
-        seen.add(img.src);
-        gallerySrcs.push(img.src);
+allGalleryMedia.forEach(el => {
+    if (!seen.has(el.src)) {
+        seen.add(el.src);
+        gallerySrcs.push(el.src);
     }
 });
 
 let lightboxIndex = 0;
 
+function isVideo(src) {
+    return src.endsWith('.mp4') || src.endsWith('.webm');
+}
+
+function showLightboxMedia(src) {
+    if (isVideo(src)) {
+        lightboxImg.style.display = 'none';
+        lightboxVideo.style.display = 'block';
+        lightboxVideo.src = src;
+        lightboxVideo.play();
+    } else {
+        lightboxVideo.style.display = 'none';
+        lightboxVideo.src = '';
+        lightboxImg.style.display = 'block';
+        lightboxImg.src = src;
+    }
+}
+
 function openLightbox(src) {
     lightboxIndex = gallerySrcs.indexOf(src);
     if (lightboxIndex === -1) lightboxIndex = 0;
-    lightboxImg.src = src;
+    showLightboxMedia(src);
     lightbox.classList.add('active');
 }
 
 function lightboxGo(direction) {
     lightboxIndex = (lightboxIndex + direction + gallerySrcs.length) % gallerySrcs.length;
-    lightboxImg.src = gallerySrcs[lightboxIndex];
+    showLightboxMedia(gallerySrcs[lightboxIndex]);
 }
 
 function closeLightbox() {
     lightbox.classList.remove('active');
+    lightboxVideo.src = '';
 }
 
-// Hero slideshow images — click to enlarge
-document.querySelectorAll('.slideshow-slide').forEach(img => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', () => openLightbox(img.src));
+// Hero slideshow media, click to enlarge
+document.querySelectorAll('.slideshow-slide').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => openLightbox(el.src));
 });
 
-// Feature card images — click to enlarge
-document.querySelectorAll('.feature-gif img').forEach(img => {
-    img.addEventListener('click', () => openLightbox(img.src));
+// Feature card media, click to enlarge
+document.querySelectorAll('.feature-gif img, .feature-gif video').forEach(el => {
+    el.addEventListener('click', () => openLightbox(el.src));
 });
 
 // Arrow buttons
 lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); lightboxGo(-1); });
 lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); lightboxGo(1); });
 
-// Close on background click (not on image or arrows)
+// Close on background click (not on media or arrows)
 lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
 });
@@ -176,15 +186,10 @@ function stopAutoplay() {
 dots.forEach(dot => {
     dot.addEventListener('click', () => {
         goToSlide(parseInt(dot.dataset.index));
-        startAutoplay(); // restart timer so it doesn't jump right after click
+        startAutoplay();
     });
 });
 
 if (slides.length > 0) {
     startAutoplay();
 }
-
-// Console easter egg
-console.log('%c🎌 DokiDokiDict', 'font-size: 24px; font-weight: bold; color: #ff6b9d;');
-console.log('%cBuilt for immersion learners who want speed and accuracy.', 'font-size: 14px; color: #9090a0;');
-console.log('%cCheck out the source: https://github.com/rtr46/dokidoki-dict', 'font-size: 12px; color: #60a5fa;');

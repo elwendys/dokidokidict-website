@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report a Bug - DokiDokiDict</title>
+    <meta name="description" content="Report a bug or issue with DokiDokiDict.">
+    <link rel="canonical" href="https://dokidokidict.com/report.html">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="guide.css">
+</head>
+
+<body>
+    <!-- Nav -->
+    <nav class="guide-nav-bar">
+        <div class="nav-brand">
+            <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:12px;">
+                <span class="logo">ドキドキ</span>
+                <span class="logo-english">DokiDokiDict</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="quickstart.html">Quick Start</a>
+            <a href="guide.html">Guide</a>
+            <a href="index.html#download">Download</a>
+            <a href="https://discord.gg/tUp4hKbFaC" target="_blank">Discord</a>
+        </div>
+    </nav>
+
+    <div class="guide-page">
+        <main class="guide-content" style="margin-left: 0; max-width: 600px; margin: 0 auto;">
+            <h1>Report a Bug</h1>
+            <p class="page-subtitle">Found something wrong? Let me know.</p>
+
+            <div class="info-box tip">
+                <p>The fastest way to report bugs or ask questions is on <a href="https://discord.gg/tUp4hKbFaC" target="_blank">Discord</a>. You can also use the form below.</p>
+            </div>
+
+            <form action="https://formspree.io/f/xpwzgwkj" method="POST" class="bug-form">
+                <div class="form-group">
+                    <label for="description">What happened?</label>
+                    <textarea id="description" name="description" rows="5" required placeholder="Describe the bug..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="steps">Steps to reproduce (optional)</label>
+                    <textarea id="steps" name="steps" rows="4" placeholder="1. Open the app&#10;2. Click on...&#10;3. ..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your email (optional, if you want a reply)</label>
+                    <input type="email" id="email" name="_replyto" placeholder="you@example.com">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit Report</button>
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+/* ===== Guide Layout ===== */
+.guide-page {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 72px; /* nav height */
+}
+
+.guide-nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ===== Sidebar ===== */
+.guide-sidebar {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 260px;
+    height: calc(100vh - 72px);
+    overflow-y: auto;
+    padding: 24px 0;
+    border-right: 1px solid var(--border-subtle);
+    background: var(--bg-dark);
+    z-index: 50;
+}
+
+.guide-sidebar a {
+    display: block;
+    padding: 8px 24px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all var(--transition);
+    border-left: 2px solid transparent;
+}
+
+.guide-sidebar a:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.guide-sidebar a.active {
+    color: var(--accent-primary);
+    border-left-color: var(--accent-primary);
+    background: rgba(255, 107, 157, 0.05);
+}
+
+.guide-sidebar .sidebar-section {
+    padding: 16px 24px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+/* ===== Content ===== */
+.guide-content {
+    margin-left: 260px;
+    flex: 1;
+    max-width: 800px;
+    padding: 40px 48px 100px;
+}
+
+.guide-content h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.guide-content .page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+}
+
+.guide-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 56px;
+    margin-bottom: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.guide-content h2:first-of-type {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.guide-content h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.guide-content p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.guide-content a {
+    color: var(--accent-tertiary);
+    text-decoration: none;
+}
+
+.guide-content a:hover {
+    text-decoration: underline;
+}
+
+.guide-content ul, .guide-content ol {
+    padding-left: 24px;
+    margin-bottom: 16px;
+}
+
+.guide-content li {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 6px;
+}
+
+/* ===== Keyboard shortcuts ===== */
+kbd {
+    display: inline-block;
+    padding: 2px 8px;
+    font-family: 'Inter', monospace;
+    font-size: 0.85em;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Hotkey table ===== */
+.hotkey-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+}
+
+.hotkey-table th {
+    text-align: left;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.hotkey-table td {
+    padding: 10px 16px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.95rem;
+}
+
+.hotkey-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* ===== Steps ===== */
+.guide-steps {
+    counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+}
+
+.guide-steps li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+
+.guide-steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 28px;
+    height: 28px;
+    background: var(--gradient-hero);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* ===== Info boxes ===== */
+.info-box {
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.info-box p {
+    margin-bottom: 0;
+}
+
+.info-box.tip {
+    background: rgba(96, 165, 250, 0.08);
+    border-left: 3px solid var(--accent-tertiary);
+}
+
+.info-box.warning {
+    background: rgba(255, 107, 157, 0.08);
+    border-left: 3px solid var(--accent-primary);
+}
+
+.info-box.note {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--text-muted);
+}
+
+/* ===== Code inline ===== */
+.guide-content code {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    color: var(--accent-secondary);
+}
+
+/* ===== Mobile sidebar ===== */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gradient-hero);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 200;
+    box-shadow: 0 4px 20px rgba(255, 107, 157, 0.3);
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .guide-sidebar {
+        transform: translateX(-100%);
+        transition: transform var(--transition);
+    }
+
+    .guide-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .guide-content {
+        margin-left: 0;
+        padding: 32px 24px 100px;
+    }
+
+    .sidebar-toggle {
+        display: flex;
+    }
+
+    .guide-nav-bar {
+        padding: 16px 20px;
+    }
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DokiDokiDict - Universal Japanese OCR Popup Dictionary</title>
+    <meta name="description"
+        content="Look up Japanese words anywhere on your screen. OCR-powered dictionary for games, manga, visual novels, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <nav class="nav">
+            <div class="nav-brand">
+                <span class="logo">ドキドキ</span>
+                <span class="logo-english">DokiDokiDict</span>
+            </div>
+            <div class="nav-links">
+                <a href="guide.html">Guide</a>
+                <a href="#features">Features</a>
+                <a href="#download">Download</a>
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="gradient-text">Look up Japanese</span>
+                <br><span class="gradient-text">add furigana</span>
+                <br><span class="gradient-text">rank definitions</span>
+                <br>anywhere on your screen
+            </h1>
+            <div class="hero-buttons">
+                <a href="#download" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Download Free
+                </a>
+                <a href="#features" class="btn btn-secondary">See Features</a>
+            </div>
+        </div>
+
+        <div class="hero-preview">
+            <div class="preview-window">
+                <div class="preview-header">
+                    <span class="preview-title" id="slideshow-title">DokiDokiDict</span>
+                </div>
+                <div class="preview-content slideshow-content">
+                    <div class="slideshow-slides">
+                        <img src="Gifs/DokiDokidict screenshot.png" alt="DokiDokiDict app" class="slideshow-slide active">
+                        <img src="Gifs/works everywheree2.gif" alt="Works everywhere demo" class="slideshow-slide">
+                        <img src="Gifs/continuous furigana.gif" alt="Furigana overlay demo" class="slideshow-slide">
+                        <img src="Gifs/def ranking.gif" alt="AI definition ranking demo" class="slideshow-slide">
+                        <img src="Gifs/Multiple Dictionaries.gif" alt="Multiple dictionaries demo" class="slideshow-slide">
+                        <img src="Gifs/Anki.gif" alt="Anki integration demo" class="slideshow-slide">
+                        <img src="Gifs/Speed.gif" alt="Speed demo" class="slideshow-slide">
+                    </div>
+                    <div class="slideshow-dots">
+                        <button class="slideshow-dot active" data-index="0" data-title="DokiDokiDict"></button>
+                        <button class="slideshow-dot" data-index="1" data-title="Works Everywhere"></button>
+                        <button class="slideshow-dot" data-index="2" data-title="Furigana Overlays"></button>
+                        <button class="slideshow-dot" data-index="3" data-title="AI Definition Ranking"></button>
+                        <button class="slideshow-dot" data-index="4" data-title="Multiple Dictionaries"></button>
+                        <button class="slideshow-dot" data-index="5" data-title="Anki Integration"></button>
+                        <button class="slideshow-dot" data-index="6" data-title="Optimized for Speed"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Read anything. Look up everything.</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-gif">
+                        <img src="Gifs/works everywheree2.gif" alt="Works everywhere demo">
+                    </div>
+                    <h3>Works Everywhere</h3>
+                    <p>Any game, any VN, any manga or book. If there's Japanese text on your screen, DokiDokiDict can read it. No text hooker required.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-gif">
+                        <img src="Gifs/continuous furigana.gif" alt="Continuous furigana overlay demo">
+                    </div>
+                    <h3>Furigana Overlays</h3>
+                    <p>See furigana readings above every word, in a VN, game, or anywhere. Trigger manually or let it update continuously. Skips words you already know from Anki.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-gif">
+                        <img src="Gifs/def ranking.gif" alt="AI definition ranking demo">
+                    </div>
+                    <h3>AI Definition Ranking</h3>
+                    <p>A word like 掛ける can have dozens of meanings. Gemini reads what you're reading and puts the right one on top.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-gif">
+                        <img src="Gifs/Multiple Dictionaries.gif" alt="Multiple dictionaries demo">
+                    </div>
+                    <h3>Multiple Dictionaries</h3>
+                    <p>Import any Yomichan dictionary and stack them in any order. Switch between dictionary profiles with a hotkey.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-gif">
+                        <img src="Gifs/Anki.gif" alt="Anki integration demo">
+                    </div>
+                    <h3>Anki Integration</h3>
+                    <p>Press E to export. Word, reading, definition, and the sentence you're reading.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-gif">
+                        <img src="Gifs/Speed.gif" alt="Speed demo">
+                    </div>
+                    <h3>Optimized for Speed</h3>
+                    <p>Optimized speed for lookups, furigana, and definition ranking to let you focus on your reading.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-hero">
+                <div class="download-info">
+                    <h2 class="section-title">Download DokiDokiDict</h2>
+                    <a href="https://itch.io" class="btn btn-primary btn-download-main">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download on itch.io
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">ドキドキ</span>
+                    <p>DokiDokiDict is currently in beta.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="guide.html">Guide</a>
+                    <a href="#features">Features</a>
+                    <a href="#download">Download</a>
+                </div>
+            </div>
+            <div class="footer-credits">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-arrow lightbox-prev" aria-label="Previous">&#8249;</button>
+        <img src="" alt="Enlarged preview">
+        <button class="lightbox-arrow lightbox-next" aria-label="Next">&#8250;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

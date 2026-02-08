@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide - DokiDokiDict</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="guide.css">
+</head>
+
+<body>
+    <!-- Nav -->
+    <nav class="guide-nav-bar">
+        <div class="nav-brand">
+            <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:12px;">
+                <span class="logo">ドキドキ</span>
+                <span class="logo-english">DokiDokiDict</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="quickstart.html">Quick Start</a>
+            <a href="guide.html" style="color: var(--text-primary);">Guide</a>
+            <a href="index.html#download">Download</a>
+        </div>
+    </nav>
+
+    <div class="guide-page">
+        <!-- Sidebar -->
+        <aside class="guide-sidebar" id="sidebar">
+            <div class="sidebar-section">Basics</div>
+            <a href="#getting-started">Getting Started</a>
+            <a href="#scan-modes">Scan Modes</a>
+            <a href="#looking-up-words">Looking Up Words</a>
+
+            <div class="sidebar-section">Features</div>
+            <a href="#furigana">Furigana Overlays</a>
+            <a href="#ai-features">AI Features</a>
+            <a href="#dictionaries">Dictionaries</a>
+            <a href="#profiles">Profiles</a>
+            <a href="#anki">Anki Integration</a>
+
+            <div class="sidebar-section">Reference</div>
+            <a href="#hotkeys">Hotkey Reference</a>
+            <a href="#settings">Settings Overview</a>
+        </aside>
+
+        <!-- Content -->
+        <main class="guide-content">
+            <h1>Guide</h1>
+            <p class="page-subtitle">Everything you need to know about DokiDokiDict.</p>
+
+            <!-- Getting Started -->
+            <h2 id="getting-started">Getting Started</h2>
+            <ol class="guide-steps">
+                <li>Download DokiDokiDict from <a href="https://itch.io">itch.io</a> and run the installer.</li>
+                <li>Launch the app. You'll see the settings window.</li>
+                <li>In the <strong>General</strong> tab, pick a scan mode and select your target (your game, VN, or region).</li>
+                <li>Click the green <strong>Start</strong> button.</li>
+                <li>Hold <kbd>Shift</kbd> and point your cursor at Japanese text. A popup appears with definitions.</li>
+            </ol>
+
+            <!-- Scan Modes -->
+            <h2 id="scan-modes">Scan Modes</h2>
+            <p>DokiDokiDict needs to know where to look for text. You pick this in the <strong>General</strong> tab.</p>
+
+            <h3>Window Mode</h3>
+            <p>Captures a specific window. Click <strong>Select...</strong> then click on your game or VN window. DokiDokiDict will only scan that window, even if other things are on top of it. This is the recommended mode. All features work at their best in Window mode especially AI definition ranking, which uses the full window text as context.</p>
+
+            <h3>Region Mode</h3>
+            <p>Captures a rectangle on your screen. Click <strong>Select...</strong> then drag to draw the area. Good for when you only want to scan subtitles at the bottom of the screen, or a specific part of a page.</p>
+
+            <h3>Screen Mode</h3>
+            <p>Captures your entire screen. Simple but less focused. Works fine if the Japanese text is the main thing on screen.</p>
+
+
+            <!-- Looking Up Words -->
+            <h2 id="looking-up-words">Looking Up Words</h2>
+            <p>Hold your lookup hotkey (default: <kbd>Shift</kbd>) and move your cursor over Japanese text. A popup appears showing:</p>
+            <ul>
+                <li><strong>The word</strong> in blue, with its reading in green brackets</li>
+                <li><strong>Numbered definitions</strong>, each sense on its own line</li>
+                <li><strong>Entry badges</strong> (&#9312;&#9313;&#9314;...), press the matching number key to export to Anki</li>
+            </ul>
+            <p>The popup follows your cursor and disappears when you release the hotkey.</p>
+
+            <!-- Furigana -->
+            <h2 id="furigana">Furigana Overlays</h2>
+            <p>DokiDokiDict can display furigana readings directly on top of your game or VN window. There are three methods:</p>
+
+            <h3>MeCab Furigana (Instant)</h3>
+            <p>Press <kbd>Num -</kbd> to trigger. Uses MeCab. Runs locally, no internet needed, results appear instantly. The recommended mode.</p>
+
+            <h3>Dynamic MeCab</h3>
+            <p>Press <kbd>Num /</kbd> to toggle. When enabled, MeCab furigana updates automatically whenever new text appears. No need to press anything, just read and the furigana follows.</p>
+
+            <h3>AI Furigana (Context-Aware)</h3>
+            <p>Press <kbd>Num *</kbd> to trigger. Uses Gemini to pick the correct reading based on context. This handles ambiguous readings like names (<span style="font-family:'Noto Sans JP'">衛宮士郎</span> <span style="font-family:'Noto Sans JP'">えみやしろう</span>) correctly. Requires a Gemini API key (see <a href="#ai-features">AI Features</a> to see how to get one for free).</p>
+
+            <h3>Clearing Furigana</h3>
+            <p>Press <kbd>Delete</kbd> to clear all furigana from the screen.</p>
+
+            <h3>Appearance</h3>
+            <p>In the <strong>Appearance</strong> tab you can change the furigana color and size.</p>
+
+            <h3>Skip Known Words</h3>
+            <p>If you have Anki integration enabled with "Skip known words" checked, furigana won't appear on words you already know (mature cards with interval &gt; 21 days).</p>
+
+            <!-- AI Features -->
+            <h2 id="ai-features">AI Features</h2>
+            <p>DokiDokiDict uses Google's Gemini API for definition ranking, reading disambiguation, and context-aware furigana.</p>
+
+            <h3>Getting a Free Gemini API Key</h3>
+            <p>New Google Cloud accounts get $300 in free credits. Sign up at <a href="https://cloud.google.com/free" target="_blank">cloud.google.com/free</a>, create a Gemini API key, and paste it into DokiDokiDict's <strong>AI Settings</strong> tab. The $300 credit gives you higher rate limits and is the recommended approach.</p>
+
+            <div class="info-box tip">
+                <p><strong>Alternative:</strong> You can also get a free API key from <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a> without signing up for Google Cloud. The free tier has lower rate limits but works fine for lighter use.</p>
+            </div>
+
+            <h3>AI Definition Ranking</h3>
+            <p>Many Japanese words have lots of meanings. <span style="font-family:'Noto Sans JP'">&#25499;&#12369;&#12427;</span> alone has over a dozen. When enabled, Gemini reads the surrounding context and reorders the definitions so the most relevant one is on top.</p>
+            <p>Enable this in the <strong>AI Settings</strong> tab by checking <strong>Enable AI Definition Ranking</strong>. Ranked entries show a gold &#10024; in the popup.</p>
+            <p>Press <kbd>J</kbd> while the popup is visible to toggle the AI's justification text, a short explanation of why it chose that definition.</p>
+            <p>The recommended model is <code>gemini-2.5-flash-lite</code>, which is fast and accurate.</p>
+
+            <h3>Bulk Pre-Ranking</h3>
+            <p>Press <kbd>Num +</kbd> to pre-rank definitions for all words currently on screen. Useful before you start reading a new page, everything will already be ranked when you hover over it. Not necessary with <code>gemini-2.5-flash-lite</code>, as it's fast enough to rank on the fly.</p>
+
+            <h3>Model Selection</h3>
+            <p>In <strong>AI Settings</strong> you can pick which Gemini model to use for ranking and furigana separately. Lighter models (like <code>gemini-2.5-flash-lite</code>) are faster and work well for ranking.</p>
+
+            <!-- Dictionaries -->
+            <h2 id="dictionaries">Dictionaries</h2>
+            <p>DokiDokiDict ships with JMdict (English) built in. You can also import additional dictionaries in Yomichan/Yomitan format.</p>
+
+            <h3>Importing Dictionaries</h3>
+            <ol class="guide-steps">
+                <li>Get a Yomichan dictionary <code>.zip</code> file. Many are available from the <a href="https://github.com/MarvNC/yomichan-dictionaries" target="_blank">Yomichan Dictionaries</a> collection.</li>
+                <li>In the <strong>Dictionary</strong> tab, click <strong>Import</strong> or drag and drop the <code>.zip</code> file.</li>
+                <li>The dictionary appears in the list. Check it to enable it.</li>
+            </ol>
+            <p>You can import as many dictionaries as you want. Enable or disable them individually.</p>
+
+            <div class="info-box warning">
+                <p>Changing dictionaries requires restarting the backend (Stop &rarr; Start).</p>
+            </div>
+
+            <!-- Profiles -->
+            <h2 id="profiles">Profiles</h2>
+            <p>Profiles let you run multiple dictionary configurations simultaneously with different hotkeys. Each profile gets its own popup window and dictionary stack.</p>
+
+            <h3>Why Profiles?</h3>
+            <p>Say you want JMdict (English definitions) on <kbd>Shift</kbd> and a J-J dictionary on <kbd>Alt</kbd> for your monolingual transition. Create two profiles, assign different dictionaries and hotkeys to each, and both popups work independently.</p>
+
+            <h3>Creating a Profile</h3>
+            <ol class="guide-steps">
+                <li>Go to the <strong>Profiles</strong> tab.</li>
+                <li>Click <strong>+ Add Profile</strong>.</li>
+                <li>Name it and select which dictionaries it should use.</li>
+                <li>In the <strong>Shortcuts</strong> tab, set the lookup hotkey for the new profile.</li>
+            </ol>
+
+            <!-- Anki -->
+            <h2 id="anki">Anki Integration</h2>
+            <p>DokiDokiDict can export words directly to Anki while you're reading. You'll need to download the <a href="https://ankiweb.net/shared/info/2055492159" target="_blank">AnkiConnect</a> add-on in Anki.</p>
+
+            <h3>Setup</h3>
+            <ol class="guide-steps">
+                <li>Install the <a href="https://ankiweb.net/shared/info/2055492159" target="_blank">AnkiConnect</a> add-on in Anki (code: <code>2055492159</code>).</li>
+                <li>Make sure Anki is running.</li>
+                <li>In DokiDokiDict's <strong>Anki</strong> tab, check <strong>Enable Anki Integration</strong>.</li>
+                <li>Set your deck name and note type.</li>
+                <li>Map the fields: which Anki field gets the word, reading, definition, and sentence.</li>
+            </ol>
+
+            <h3>Exporting</h3>
+            <p>While the popup is showing:</p>
+            <ul>
+                <li>Press <kbd>E</kbd> to export the currently highlighted entry</li>
+                <li>Press <kbd>1</kbd>-<kbd>9</kbd> to quick-export a specific numbered entry</li>
+            </ul>
+            <p>The export button in the popup changes to show status: <strong>+</strong> (ready) &rarr; <strong>&hellip;</strong> (sending) &rarr; <strong>&check;</strong> (added).</p>
+            <p>Exported cards include the word, reading, definition, and the sentence you were reading as context.</p>
+
+            <h3>Skip Known Words</h3>
+            <p>Check "Skip known words" in the Anki tab. If enabled, words with mature Anki cards (interval &gt; 21 days) won't show furigana.</p>
+
+            <!-- Hotkeys -->
+            <h2 id="hotkeys">Hotkey Reference</h2>
+            <p>All hotkeys are configurable in the <strong>Shortcuts</strong> tab. These are the defaults:</p>
+
+            <h3>Lookup</h3>
+            <table class="hotkey-table">
+                <thead>
+                    <tr><th>Hotkey</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><kbd>Shift</kbd> (hold)</td><td>Look up word under cursor</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Furigana</h3>
+            <table class="hotkey-table">
+                <thead>
+                    <tr><th>Hotkey</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><kbd>Num -</kbd></td><td>MeCab furigana (instant, offline)</td></tr>
+                    <tr><td><kbd>Num *</kbd></td><td>AI furigana (context-aware)</td></tr>
+                    <tr><td><kbd>Num /</kbd></td><td>Toggle dynamic MeCab (auto-updating furigana)</td></tr>
+                    <tr><td><kbd>Delete</kbd></td><td>Clear furigana overlay</td></tr>
+                </tbody>
+            </table>
+
+            <h3>AI</h3>
+            <table class="hotkey-table">
+                <thead>
+                    <tr><th>Hotkey</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><kbd>Num +</kbd></td><td>Bulk pre-rank all visible definitions</td></tr>
+                    <tr><td><kbd>J</kbd></td><td>Toggle AI justification display</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Anki Export</h3>
+            <table class="hotkey-table">
+                <thead>
+                    <tr><th>Hotkey</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><kbd>E</kbd></td><td>Export current entry to Anki</td></tr>
+                    <tr><td><kbd>1</kbd>-<kbd>9</kbd></td><td>Quick export entry by number</td></tr>
+                </tbody>
+            </table>
+
+            <!-- Settings -->
+            <h2 id="settings">Settings Overview</h2>
+            <p>Quick reference for each tab in the settings window.</p>
+
+            <table class="hotkey-table">
+                <thead>
+                    <tr><th>Tab</th><th>What's There</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>General</strong></td><td>Scan mode (Window/Region/Screen), target selection, furigana overlay toggle</td></tr>
+                    <tr><td><strong>AI Settings</strong></td><td>Gemini API key, ranking model, furigana model, enable/disable toggles</td></tr>
+                    <tr><td><strong>Appearance</strong></td><td>Furigana color and size</td></tr>
+                    <tr><td><strong>Anki</strong></td><td>AnkiConnect settings, deck/note type, field mapping, known word skipping</td></tr>
+                    <tr><td><strong>Dictionary</strong></td><td>JMdict toggle, Yomichan dictionary import/management</td></tr>
+                    <tr><td><strong>Profiles</strong></td><td>Create/edit/delete dictionary profiles</td></tr>
+                    <tr><td><strong>Shortcuts</strong></td><td>All hotkey configuration (per-profile and global)</td></tr>
+                    <tr><td><strong>History</strong></td><td>Reading session log with all captured text</td></tr>
+                </tbody>
+            </table>
+
+        </main>
+    </div>
+
+    <!-- Mobile sidebar toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle navigation">&#9776;</button>
+
+    <script>
+        // Sidebar toggle for mobile
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+
+        // Close sidebar when clicking a link (mobile)
+        sidebar.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+            });
+        });
+
+        // Highlight active sidebar link on scroll
+        const sections = document.querySelectorAll('.guide-content h2[id]');
+        const sidebarLinks = document.querySelectorAll('.guide-sidebar a[href^="#"]');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.getBoundingClientRect().top;
+                if (top < 120) current = section.id;
+            });
+            sidebarLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+            });
+        });
+    </script>
+</body>
+
+</html>

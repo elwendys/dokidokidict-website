@@ -36,8 +36,8 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe feature cards, steps, download cards, and philosophy stats
-document.querySelectorAll('.feature-card, .step, .download-card, .philosophy-stat').forEach(el => {
+// Observe feature cards and steps
+document.querySelectorAll('.feature-card, .step, .download-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -60,12 +60,6 @@ document.querySelectorAll('.features-grid, .download-cards').forEach(grid => {
     items.forEach((item, index) => {
         item.style.transitionDelay = `${index * 0.1}s`;
     });
-});
-
-// Stagger animation for philosophy stats
-const philosophyStats = document.querySelectorAll('.philosophy-stat');
-philosophyStats.forEach((stat, index) => {
-    stat.style.transitionDelay = `${index * 0.15}s`;
 });
 
 // Lightbox with arrow navigation (supports both images and videos)

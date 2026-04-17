@@ -103,7 +103,7 @@ body {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background:
+    background: 
         radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 107, 157, 0.15) 0%, transparent 50%),
         radial-gradient(ellipse 60% 40% at 80% 60%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
     pointer-events: none;
@@ -136,11 +136,10 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: var(--text-secondary);
-    max-width: 700px;
+    max-width: 600px;
     margin-bottom: 40px;
-    line-height: 1.7;
 }
 
 .hero-buttons {
@@ -306,7 +305,7 @@ video.slideshow-slide.active {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 24px;
 }
 
@@ -415,70 +414,6 @@ video.slideshow-slide.active {
     color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.7;
-    margin-bottom: 12px;
-}
-
-.feature-card p:last-child {
-    margin-bottom: 0;
-}
-
-/* ===== Philosophy Section ("Just read.") ===== */
-.philosophy-section {
-    padding: 100px 0;
-    background: linear-gradient(180deg, rgba(18, 18, 26, 0.5) 0%, rgba(255, 107, 157, 0.03) 50%, rgba(18, 18, 26, 0.5) 100%);
-}
-
-.philosophy-text {
-    max-width: 700px;
-    margin: 0 auto 60px;
-    text-align: center;
-}
-
-.philosophy-text p {
-    color: var(--text-secondary);
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 24px;
-}
-
-.philosophy-text p:last-child {
-    margin-bottom: 0;
-}
-
-.philosophy-stats {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
-}
-
-.philosophy-stat {
-    text-align: center;
-    min-width: 160px;
-}
-
-.philosophy-stat .stat-kanji {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    background: var(--gradient-hero);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.2;
-    margin-bottom: 8px;
-}
-
-.philosophy-stat .stat-number {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-}
-
-.philosophy-stat .stat-label {
-    font-size: 0.9rem;
-    color: var(--text-muted);
 }
 
 /* ===== FAQ Section ===== */
@@ -577,12 +512,6 @@ video.slideshow-slide.active {
     box-shadow: 0 8px 35px rgba(255, 107, 157, 0.4);
 }
 
-.download-platform {
-    margin-top: 12px;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-}
-
 /* ===== Footer ===== */
 .footer {
     padding: 60px 0 40px;
@@ -644,35 +573,29 @@ video.slideshow-slide.active {
         gap: 16px;
         padding: 16px 20px;
     }
-
+    
     .nav-links {
         gap: 20px;
     }
-
+    
     .hero-content {
         padding: 40px 20px;
     }
-
+    
     .hero-title {
         font-size: 2rem;
     }
-
+    
     .hero-subtitle {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
-
+    
     .hero-preview {
         padding: 0 20px 40px;
     }
-
+    
     .section-title {
         font-size: 1.75rem;
-    }
-
-    .philosophy-stats {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
     }
 
     .footer-content {
@@ -680,7 +603,7 @@ video.slideshow-slide.active {
         align-items: center;
         text-align: center;
     }
-
+    
     .footer-brand p {
         max-width: none;
     }

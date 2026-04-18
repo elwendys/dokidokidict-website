@@ -12,61 +12,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add subtle parallax effect to hero background
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroBg = document.querySelector('.hero-bg');
-    if (heroBg && scrolled < window.innerHeight) {
-        heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
-    }
-});
 
-// Animate elements on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+// Feature cards, steps, download cards, philosophy stats — no fade-in animations.
+// Content is immediately visible on scroll.
 
-const observer = new IntersectionObserver((entries) => {
+// Lazy-load feature card videos: only play when visible, pause when not
+const videoObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+        const video = entry.target;
         if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-            observer.unobserve(entry.target);
+            video.play();
+        } else {
+            video.pause();
         }
     });
-}, observerOptions);
+}, { threshold: 0.2 });
 
-// Observe feature cards, steps, download cards, and philosophy stats
-document.querySelectorAll('.feature-card, .step, .download-card, .philosophy-stat').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
+document.querySelectorAll('.feature-gif video').forEach(video => {
+    video.pause(); // Pause all feature videos initially
+    videoObserver.observe(video);
 });
 
-// Add animate-in class styles dynamically
-const style = document.createElement('style');
-style.textContent = `
-    .animate-in {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-    }
-`;
-document.head.appendChild(style);
-
-// Stagger animation for grid items
-document.querySelectorAll('.features-grid, .download-cards').forEach(grid => {
-    const items = grid.querySelectorAll('.feature-card, .download-card');
-    items.forEach((item, index) => {
-        item.style.transitionDelay = `${index * 0.1}s`;
-    });
-});
-
-// Stagger animation for philosophy stats
-const philosophyStats = document.querySelectorAll('.philosophy-stat');
-philosophyStats.forEach((stat, index) => {
-    stat.style.transitionDelay = `${index * 0.15}s`;
-});
 
 // Lightbox with arrow navigation (supports both images and videos)
 const lightbox = document.getElementById('lightbox');
@@ -166,15 +132,30 @@ const SLIDE_INTERVAL = 6000;
 
 if (slides.length > 0 && dots.length > 0) {
     function goToSlide(index) {
+        // Pause the old slide's video
+        if (slides[currentSlide].tagName === 'VIDEO') {
+            slides[currentSlide].pause();
+        }
         slides[currentSlide].classList.remove('active');
         dots[currentSlide].classList.remove('active');
         currentSlide = index;
         slides[currentSlide].classList.add('active');
         dots[currentSlide].classList.add('active');
+        // Play the new slide's video
+        if (slides[currentSlide].tagName === 'VIDEO') {
+            slides[currentSlide].play();
+        }
         if (slideshowTitle) {
             slideshowTitle.textContent = dots[currentSlide].dataset.title;
         }
     }
+
+    // Pause all non-active slideshow videos on load
+    slides.forEach((slide, i) => {
+        if (i !== 0 && slide.tagName === 'VIDEO') {
+            slide.pause();
+        }
+    });
 
     function nextSlide() {
         goToSlide((currentSlide + 1) % slides.length);

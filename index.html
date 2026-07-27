@@ -4,33 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DokiDokiDict - Japanese OCR Popup Dictionary with AI Definition Ranking</title>
+    <title>DokiDokiDict - Japanese OCR Popup Dictionary and Reading Recommender</title>
     <meta name="description"
-        content="Free OCR popup dictionary with AI definition ranking, instant furigana with pitch accent, built-in SRS, word tracking, i+1 sentence detection, recall challenges, stats, achievements, and Anki integration.">
+        content="Free Japanese OCR popup dictionary for Windows. Look up games and visual novels on screen, track vocabulary, and find what to read next with a personalized recommender.">
     <link rel="canonical" href="https://dokidokidict.com/">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dokidokidict.com/">
-    <meta property="og:title" content="DokiDokiDict - Japanese OCR Popup Dictionary with AI Definition Ranking">
-    <meta property="og:description" content="Free OCR popup dictionary with AI definition ranking, instant furigana with pitch accent, built-in SRS, word tracking, i+1 sentence detection, recall challenges, stats, achievements, and Anki integration.">
+    <meta property="og:title" content="DokiDokiDict - Japanese OCR Popup Dictionary and Reading Recommender">
+    <meta property="og:description" content="Look up Japanese anywhere on screen, track what you learn, and find what to read next from your actual vocabulary.">
     <meta property="og:image" content="https://dokidokidict.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="DokiDokiDict, a free open-source Japanese reading tool for Windows">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DokiDokiDict - Japanese OCR Popup Dictionary">
-    <meta name="twitter:description" content="Free OCR popup dictionary with AI definition ranking, instant furigana with pitch accent, built-in SRS, word tracking, and Anki integration.">
+    <meta name="twitter:title" content="DokiDokiDict - Japanese OCR Dictionary and Reading Recommender">
+    <meta name="twitter:description" content="Look up Japanese anywhere on screen, track what you learn, and find what to read next from your actual vocabulary.">
     <meta name="twitter:image" content="https://dokidokidict.com/og-image.png">
-
-    <meta name="keywords" content="japanese dictionary, ocr, popup dictionary, furigana, anki, visual novel, japanese learning, yomichan, definition ranking, gemini, srs, pitch accent, spaced repetition">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="Gifs/posters/works-everywhere.webp" as="image" type="image/webp">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://dokidokidict.com/#website",
+                "url": "https://dokidokidict.com/",
+                "name": "DokiDokiDict",
+                "description": "Japanese OCR popup dictionary and personalized reading recommender for Windows",
+                "inLanguage": "en"
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://dokidokidict.com/#software",
+                "name": "DokiDokiDict",
+                "url": "https://dokidokidict.com/",
+                "downloadUrl": "https://magicshot.itch.io/dokidokidict",
+                "softwareVersion": "0.9.5",
+                "operatingSystem": "Windows 10, Windows 11",
+                "applicationCategory": "EducationalApplication",
+                "applicationSubCategory": "Japanese reading tool",
+                "description": "A free Japanese OCR popup dictionary, furigana overlay, SRS, vocabulary tracker, and personalized reading recommender.",
+                "image": "https://dokidokidict.com/og-image.png",
+                "screenshot": "https://dokidokidict.com/Gifs/recommender-gallery.webp",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "featureList": [
+                    "Japanese OCR popup dictionary",
+                    "On-screen furigana and pitch accent",
+                    "Personalized Japanese reading recommender",
+                    "Built-in FSRS spaced repetition",
+                    "Anki integration",
+                    "Vocabulary and kanji tracking"
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -45,7 +89,7 @@
             <div class="nav-links">
                 <a href="quickstart.html">Quick Start</a>
                 <a href="guide.html">Guide</a>
-                <a href="#features">Features</a>
+                <a href="recommender.html">Recommender</a>
                 <a href="https://discord.gg/tUp4hKbFaC" target="_blank">Discord</a>
                 <a href="#download">Download</a>
             </div>
@@ -58,7 +102,7 @@
                 <br><span class="gradient-text">rank definitions</span>
                 <br>anywhere on your screen
             </h1>
-            <p class="hero-subtitle">Free OCR popup dictionary with AI definition ranking, instant furigana with pitch accent, built-in SRS, word tracking, i+1 sentence detection, recall challenges, stats, achievements, and Anki integration.</p>
+            <p class="hero-subtitle">Look up Japanese anywhere on screen, keep track of what you learn, and find the next work that fits your vocabulary.</p>
             <div class="hero-buttons">
                 <a href="#download" class="btn btn-primary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -79,11 +123,11 @@
                 </div>
                 <div class="preview-content slideshow-content">
                     <div class="slideshow-slides">
-                        <video src="Gifs/works everywheree2.mp4" alt="Works everywhere demo" class="slideshow-slide active" autoplay loop muted playsinline></video>
-                        <video src="Gifs/pitchaccent2.mp4" alt="Furigana with pitch accent demo" class="slideshow-slide" loop muted playsinline preload="none"></video>
-                        <video src="Gifs/def ranking.mp4" alt="AI definition ranking demo" class="slideshow-slide" loop muted playsinline preload="none"></video>
-                        <video src="Gifs/Multiple Dictionaries.mp4" alt="Multiple dictionaries demo" class="slideshow-slide" loop muted playsinline preload="none"></video>
-                        <video src="Gifs/Anki.mp4" alt="Anki integration demo" class="slideshow-slide" loop muted playsinline preload="none"></video>
+                        <video src="Gifs/works everywheree2.mp4" poster="Gifs/posters/works-everywhere.webp" aria-label="Works everywhere demo" class="slideshow-slide active" autoplay loop muted playsinline></video>
+                        <video src="Gifs/pitchaccent2.mp4" poster="Gifs/posters/pitch-accent.webp" aria-label="Furigana with pitch accent demo" class="slideshow-slide" loop muted playsinline preload="none"></video>
+                        <video src="Gifs/def ranking.mp4" poster="Gifs/posters/definition-ranking.webp" aria-label="AI definition ranking demo" class="slideshow-slide" loop muted playsinline preload="none"></video>
+                        <video src="Gifs/Multiple Dictionaries.mp4" poster="Gifs/posters/multiple-dictionaries.webp" aria-label="Multiple dictionaries demo" class="slideshow-slide" loop muted playsinline preload="none"></video>
+                        <video src="Gifs/Anki.mp4" poster="Gifs/posters/anki-integration.webp" aria-label="Anki integration demo" class="slideshow-slide" loop muted playsinline preload="none"></video>
                     </div>
                     <div class="slideshow-dots">
                         <button class="slideshow-dot active" data-index="0" data-title="Works Everywhere"></button>
@@ -97,6 +141,49 @@
         </div>
     </header>
 
+    <!-- Recommender Section -->
+    <section id="recommender" class="recommender-section">
+        <div class="container">
+            <div class="release-label">NEW IN v0.9.5</div>
+            <h2 class="section-title">Find what to read next from what you actually know.</h2>
+            <p class="section-subtitle recommender-lead">The Recommender Gallery evaluates hundreds of visual novels, light novels, anime, games, and literary works against your vocabulary from DokiDokiDict, Anki, and the built-in SRS.</p>
+
+            <button class="recommender-preview" type="button" aria-label="Enlarge the Recommender Gallery screenshot">
+                <img src="Gifs/recommender-gallery.webp" alt="DokiDokiDict Recommender Gallery showing filters, ranking and planning controls, a cover gallery, and work analysis" width="1642" height="900" loading="lazy">
+            </button>
+
+            <div class="recommender-points">
+                <article class="recommender-point">
+                    <span class="recommender-number">01</span>
+                    <h3>Personal to your vocabulary</h3>
+                    <p>Use your reading history, Anki cards, built-in SRS deck, or any combination of them. Change the learning rules before every simulation.</p>
+                </article>
+                <article class="recommender-point">
+                    <span class="recommender-number">02</span>
+                    <h3>Rank your next read</h3>
+                    <p>Filter the shelf, choose what matters to you, and rank every matching work by comprehension, useful new words, i+1 material, or learning gain.</p>
+                </article>
+                <article class="recommender-point">
+                    <span class="recommender-number">03</span>
+                    <h3>Plan a reading sequence</h3>
+                    <p>Build an ordered path within a page budget or toward a vocabulary target. Mark works as virtually read to add their simulated vocabulary gains to the next ranking without changing your real data.</p>
+                </article>
+                <article class="recommender-point">
+                    <span class="recommender-number">04</span>
+                    <h3>Inspect what changes as you read</h3>
+                    <p>Open a work's analysis, move through it from 0 to 90%, and see how recognition grows as repeated vocabulary graduates during the work.</p>
+                </article>
+            </div>
+
+            <div class="recommender-cta">
+                <a class="btn btn-secondary" href="recommender.html">See how the recommender works</a>
+                <a class="btn btn-secondary" href="analysis/30-percent-rule.html">Read the 30% result</a>
+                <a class="btn btn-secondary" href="works/index.html">Browse work statistics</a>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
@@ -106,7 +193,7 @@
                 <!-- 1. Works Everywhere (existing video) -->
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <video src="Gifs/works everywheree2.mp4" alt="Works everywhere demo" loop muted playsinline preload="none"></video>
+                        <video src="Gifs/works everywheree2.mp4" poster="Gifs/posters/works-everywhere.webp" aria-label="Works everywhere demo" loop muted playsinline preload="none"></video>
                     </div>
                     <h3>Works Everywhere</h3>
                     <p>Any game, any VN, any manga or book. If there's Japanese text on your screen, DokiDokiDict can read it. No text hooker required.</p>
@@ -115,7 +202,7 @@
                 <!-- 2. Instant Furigana (existing video) -->
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <video src="Gifs/pitchaccent2.mp4" alt="Furigana with pitch accent demo" loop muted playsinline preload="none"></video>
+                        <video src="Gifs/pitchaccent2.mp4" poster="Gifs/posters/pitch-accent.webp" aria-label="Furigana with pitch accent demo" loop muted playsinline preload="none"></video>
                     </div>
                     <h3>Instant Furigana & Pitch Accent</h3>
                     <p>See readings above every word instantly. MeCab furigana appears in milliseconds, fully offline. As you learn words, their furigana disappears, the scaffolding comes off on its own. Trigger once or let it update continuously.</p>
@@ -125,7 +212,7 @@
                 <!-- 3. Anki Integration (existing video) -->
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <video src="Gifs/Anki.mp4" alt="Anki integration demo" loop muted playsinline preload="none"></video>
+                        <video src="Gifs/Anki.mp4" poster="Gifs/posters/anki-integration.webp" aria-label="Anki integration demo" loop muted playsinline preload="none"></video>
                     </div>
                     <h3>Anki Integration</h3>
                     <p>Press E to export. Word, reading, definition, the sentence you're reading with furigana, a screenshot, and pitch accent, all in one keypress. Field mapping is fully configurable, works with any Anki note type.</p>
@@ -134,7 +221,7 @@
                 <!-- 4. AI Definition Ranking (existing video) -->
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <video src="Gifs/def ranking.mp4" alt="AI definition ranking demo" loop muted playsinline preload="none"></video>
+                        <video src="Gifs/def ranking.mp4" poster="Gifs/posters/definition-ranking.webp" aria-label="AI definition ranking demo" loop muted playsinline preload="none"></video>
                     </div>
                     <h3>AI Definition Ranking</h3>
                     <p>A word like 掛ける can have dozens of meanings. Gemini reads what you're reading and puts the right one on top.</p>
@@ -143,7 +230,7 @@
                 <!-- 5. Built-in SRS -->
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <img src="Gifs/inline review.gif" alt="Inline SRS review during reading demo">
+                        <video src="Gifs/inline-review.mp4" poster="Gifs/posters/inline-review.webp" aria-label="Inline SRS review during reading demo" loop muted playsinline preload="none"></video>
                     </div>
                     <h3>Built-in SRS</h3>
                     <p>Built-in spaced repetition. Review cards in a dedicated tab, or optionally have them appear at natural pauses while you read, no switching apps and no breaking flow. Optionally, words you've seen more than a set number of times get added automatically. With test-before-add mode, the app quizzes you on auto-added words a few pages later, only words you actually retained make it into your deck. Works standalone, Anki not required.</p>
@@ -152,7 +239,7 @@
                 <!-- 6. Multiple Dictionaries (existing video) -->
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <video src="Gifs/Multiple Dictionaries.mp4" alt="Multiple dictionaries demo" loop muted playsinline preload="none"></video>
+                        <video src="Gifs/Multiple Dictionaries.mp4" poster="Gifs/posters/multiple-dictionaries.webp" aria-label="Multiple dictionaries demo" loop muted playsinline preload="none"></video>
                     </div>
                     <h3>Multiple Dictionaries</h3>
                     <p>Import any Yomichan dictionary. Stack them, reorder them, switch between profiles with a hotkey. Lock a popup and look up words inside the definition, essential for the monolingual transition.</p>
@@ -163,7 +250,7 @@
                 <!-- 8. Word Tracking & Recall -->
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <video src="Gifs/iplus1.mp4" alt="Word tracking, recall and i+1 sentence detection demo" loop muted playsinline preload="none"></video>
+                        <video src="Gifs/iplus1.mp4" poster="Gifs/posters/word-tracking.webp" aria-label="Word tracking, recall and i+1 sentence detection demo" loop muted playsinline preload="none"></video>
                     </div>
                     <h3>Word Tracking, Recall & i+1 Sentence Detection</h3>
                     <p>Optionally, color-underlines every word directly on screen by status: mature Anki card, in your deck, seen N+ times (you set the threshold), or unknown. Know what to look up at a glance. Sentences with exactly one unknown word can be highlighted as i+1. Optionally, looking up a word you should already know hides the definition, you recall it first. A successful recall cements it deeper than reading the English ever would.</p>
@@ -172,7 +259,7 @@
                 <!-- 8. Stats -->
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <img src="Gifs/stat.PNG" alt="Advanced Stats dashboard">
+                        <img src="Gifs/stat.PNG" alt="Advanced Stats dashboard" loading="lazy">
                     </div>
                     <h3>Stats</h3>
                     <p>See exactly where you are. How many of the top N most common kanji you've seen and how many you've seen M+ times. How many of the top N most common VN words you've seen and how many you've seen M+ times. All thresholds configurable. Kanji grids color-coded by frequency, vocabulary sorted by encounter count, volume of pages read.</p>
@@ -182,10 +269,10 @@
                 <!-- 9. Achievements & Reading Streaks -->
                 <div class="feature-card">
                     <div class="feature-gif">
-                        <video src="Gifs/Achievements.mp4" alt="Achievements and reading streaks demo" loop muted playsinline preload="none"></video>
+                        <video src="Gifs/Achievements.mp4" poster="Gifs/posters/achievements.webp" aria-label="Achievements and reading streaks demo" loop muted playsinline preload="none"></video>
                     </div>
                     <h3>Achievements & Reading Streaks</h3>
-                    <p>Set a daily page goal, starting as low as one. Each week you complete, the app suggests raising it, from 1 page a day up to 50, building up reading endurance and reading speed. Miss a day without losing your streak. The goal is to take you to 10,000 pages eventually, which is fluency.</p>
+                    <p>Set a daily page goal, starting as low as one. Each week you complete, the app suggests raising it, from 1 page a day up to 50, building up reading endurance and reading speed. Miss a day without losing your streak and build toward long-term milestones such as 10,000 pages.</p>
                     <p>139 milestones across reading volume, vocabulary, kanji, and VN word frequency. The finals: 30,000 pages read, 10,000 words retained, all 2,136 Jouyou kanji mastered, top 10,000 VN words mastered, 100 pages a day for a month.</p>
                 </div>
 
@@ -199,7 +286,7 @@
             <h2 class="section-title">Just read.</h2>
 
             <div class="philosophy-text">
-                <p>We know fluency is built on volume. DokiDokiDict tracks every page, every word, every kanji you encounter. At 10,000 pages, you're there. Think of it as a loading bar.</p>
+                <p>Reading ability is built through a lot of reading. DokiDokiDict tracks every page, word, and kanji you encounter, so the work accumulating behind your progress is visible.</p>
                 <p>As you grow, the scaffolding comes off. Furigana disappears on words you've learned. Definitions hide for words you should already know. The app makes itself less necessary over time. Every feature feeds the next.</p>
                 <p>Mining happens in the background. Reviews happen between pages. You never leave your book, VN or game.</p>
                 <p>Your daily reading goal starts wherever you are and grows week by week. The app takes you from 1 page a day to 50.</p>
@@ -258,22 +345,17 @@
 
                 <details class="faq-item">
                     <summary>Does it need internet?</summary>
-                    <p>Only for AI definition ranking (Gemini API). Dictionary lookups, OCR, and MeCab furigana all work fully offline without any API key, you just won't have AI definition ranking or AI furigana.</p>
-                </details>
-
-                <details class="faq-item">
-                    <summary>Is the Gemini API free?</summary>
-                    <p>Yes. New Google Cloud accounts get $300 in free credits, which gives you higher rate limits. You can also get a free key from <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a> with lower rate limits. See the <a href="guide.html#ai-features">guide</a> for setup steps.</p>
+                    <p>Dictionary lookup and MeCab furigana run locally. Google Lens, the hosted Recommender Gallery, and optional Gemini features need internet. Select the bundled meikiocr provider if you want OCR to remain local and offline.</p>
                 </details>
 
                 <details class="faq-item">
                     <summary>What games and VNs does it work with?</summary>
-                    <p>All of them. DokiDokiDict uses OCR, so it works with any game or VN regardless of engine. Exclusive fullscreen titles work too via the Magpie compatibility setting, like Tsukihime or Fate/stay night.</p>
+                    <p>Most of them. Because DokiDokiDict uses OCR, it is not tied to a particular engine. Windowed and borderless modes work best, and Magpie compatibility can help with titles that cannot be captured directly.</p>
                 </details>
 
                 <details class="faq-item">
                     <summary>Does it have built-in SRS?</summary>
-                    <p>Yes. Cards are scheduled with the FSRS-4.5 algorithm. They can optionally appear while you read, between pages. Words you encounter often can be added automatically. With test-before-add mode, the app quizzes you on auto-added words a few pages later, only words you actually retained make it into your deck. Works standalone, no Anki required.</p>
+                    <p>Yes. Cards are scheduled with FSRS. They can optionally appear while you read, between pages. Words you encounter often can be added automatically. With test-before-add mode, the app quizzes you on auto-added words a few pages later, only words you actually retained make it into your deck. Works standalone, no Anki required.</p>
                 </details>
 
                 <details class="faq-item">
@@ -282,8 +364,8 @@
                 </details>
 
                 <details class="faq-item">
-                    <summary>How does it compare to text hookers / GameSentenceMiner?</summary>
-                    <p>DokiDokiDict uses OCR, works with any game, any VN, any manga, no hooks, no per-game setup. It also tracks your reading history across everything, gives you word frequency data, i+1 detection, and recall challenges that text-hooker-based tools can't do.</p>
+                    <summary>How does it compare to text hookers?</summary>
+                    <p>DokiDokiDict uses OCR rather than hooks, so it can work with games, VNs, manga, and other Japanese text without per-title hook setup. It also combines lookups with reading history, word-frequency tracking, i+1 detection, and recall challenges.</p>
                 </details>
             </div>
         </div>
@@ -295,11 +377,14 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <span class="logo">ドキドキ</span>
-                    <p>DokiDokiDict v0.9.4</p>
+                    <p>DokiDokiDict v0.9.5</p>
                 </div>
                 <div class="footer-links">
                     <a href="quickstart.html">Quick Start</a>
                     <a href="guide.html">Guide</a>
+                    <a href="recommender.html">Recommender</a>
+                    <a href="works/index.html">Work Statistics</a>
+                    <a href="analysis/index.html">Analysis</a>
                     <a href="#features">Features</a>
                     <a href="https://github.com/elwendys/DokiDokiDict-releases" target="_blank">GitHub</a>
                     <a href="https://discord.gg/tUp4hKbFaC" target="_blank">Discord</a>
@@ -315,8 +400,8 @@
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
         <button class="lightbox-arrow lightbox-prev" aria-label="Previous">&#8249;</button>
-        <img src="" alt="Enlarged preview" id="lightbox-img">
-        <video src="" id="lightbox-video" autoplay loop muted playsinline></video>
+        <img alt="Enlarged preview" id="lightbox-img">
+        <video id="lightbox-video" autoplay loop muted playsinline></video>
         <button class="lightbox-arrow lightbox-next" aria-label="Next">&#8250;</button>
     </div>
 

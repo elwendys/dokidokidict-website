@@ -332,3 +332,36 @@ kbd {
         padding: 16px 20px;
     }
 }
+
+@media (max-width: 600px) {
+    .guide-nav-bar {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 20px;
+    }
+
+    .guide-nav-bar .nav-brand,
+    .guide-nav-bar .nav-brand a {
+        width: auto;
+        flex: none;
+        white-space: nowrap;
+    }
+
+    .guide-nav-bar .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .guide-page {
+        padding-top: 106px;
+    }
+
+    .guide-sidebar {
+        top: 106px;
+        height: calc(100vh - 106px);
+    }
+}

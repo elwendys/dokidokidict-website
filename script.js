@@ -16,12 +16,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Feature cards, steps, download cards, philosophy stats — no fade-in animations.
 // Content is immediately visible on scroll.
 
+function playVideo(video) {
+    const playRequest = video.play();
+    if (playRequest && typeof playRequest.catch === 'function') {
+        playRequest.catch(() => {
+            // Playback can be interrupted normally when the slideshow advances
+            // or an observed video leaves the viewport.
+        });
+    }
+}
+
 // Lazy-load feature card videos: only play when visible, pause when not
 const videoObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         const video = entry.target;
         if (entry.isIntersecting) {
-            video.play();
+            playVideo(video);
         } else {
             video.pause();
         }
@@ -42,10 +52,12 @@ if (lightbox) {
     const lightboxPrev = lightbox.querySelector('.lightbox-prev');
     const lightboxNext = lightbox.querySelector('.lightbox-next');
 
-    // Build gallery from all clickable media (hero slideshow + feature cards)
+    // Build gallery from all clickable media
     const allGalleryMedia = [
         ...document.querySelectorAll('.slideshow-slide'),
-        ...document.querySelectorAll('.feature-gif img, .feature-gif video')
+        ...document.querySelectorAll('.recommender-preview img'),
+        ...document.querySelectorAll('.feature-gif img, .feature-gif video'),
+        ...document.querySelectorAll('.article-figure img')
     ];
     // Dedupe by src so the same media doesn't appear twice
     const gallerySrcs = [];
@@ -63,12 +75,20 @@ if (lightbox) {
         return src.endsWith('.mp4') || src.endsWith('.webm');
     }
 
+    function resetLightboxZoom() {
+        lightbox.classList.remove('zoomed');
+        lightbox.scrollLeft = 0;
+        lightbox.scrollTop = 0;
+        lightboxImg.setAttribute('aria-label', 'View figure at full resolution');
+    }
+
     function showLightboxMedia(src) {
+        resetLightboxZoom();
         if (isVideo(src)) {
             lightboxImg.style.display = 'none';
             lightboxVideo.style.display = 'block';
             lightboxVideo.src = src;
-            lightboxVideo.play();
+            playVideo(lightboxVideo);
         } else {
             lightboxVideo.style.display = 'none';
             lightboxVideo.src = '';
@@ -91,7 +111,34 @@ if (lightbox) {
 
     function closeLightbox() {
         lightbox.classList.remove('active');
+        resetLightboxZoom();
         lightboxVideo.src = '';
+    }
+
+    function toggleLightboxZoom(event) {
+        if (lightboxImg.style.display === 'none') return;
+
+        if (lightbox.classList.contains('zoomed')) {
+            resetLightboxZoom();
+            return;
+        }
+
+        const fittedRect = lightboxImg.getBoundingClientRect();
+        const focusX = event.clientX || fittedRect.left + fittedRect.width / 2;
+        const focusY = event.clientY || fittedRect.top + fittedRect.height / 2;
+        const ratioX = Math.max(0, Math.min(1, (focusX - fittedRect.left) / fittedRect.width));
+        const ratioY = Math.max(0, Math.min(1, (focusY - fittedRect.top) / fittedRect.height));
+
+        lightbox.classList.add('zoomed');
+        lightboxImg.setAttribute('aria-label', 'Fit figure to screen');
+        requestAnimationFrame(() => {
+            lightbox.scrollLeft = lightboxImg.offsetLeft
+                + ratioX * lightboxImg.offsetWidth
+                - focusX;
+            lightbox.scrollTop = lightboxImg.offsetTop
+                + ratioY * lightboxImg.offsetHeight
+                - focusY;
+        });
     }
 
     // Hero slideshow media, click to enlarge
@@ -103,6 +150,37 @@ if (lightbox) {
     // Feature card media, click to enlarge
     document.querySelectorAll('.feature-gif img, .feature-gif video').forEach(el => {
         el.addEventListener('click', () => openLightbox(el.src));
+    });
+
+    // Analysis figures, click or press Enter/Space to enlarge
+    document.querySelectorAll('.article-figure img').forEach(el => {
+        el.tabIndex = 0;
+        el.setAttribute('role', 'button');
+        el.setAttribute('aria-label', `Enlarge figure: ${el.alt}`);
+        el.addEventListener('click', () => openLightbox(el.src));
+        el.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openLightbox(el.src);
+            }
+        });
+    });
+
+    document.querySelectorAll('.recommender-preview').forEach(button => {
+        const preview = button.querySelector('img');
+        if (preview) {
+            button.addEventListener('click', () => openLightbox(preview.src));
+        }
+    });
+
+    lightboxImg.tabIndex = 0;
+    lightboxImg.setAttribute('role', 'button');
+    lightboxImg.addEventListener('click', toggleLightboxZoom);
+    lightboxImg.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleLightboxZoom(e);
+        }
     });
 
     // Arrow buttons
@@ -143,7 +221,7 @@ if (slides.length > 0 && dots.length > 0) {
         dots[currentSlide].classList.add('active');
         // Play the new slide's video
         if (slides[currentSlide].tagName === 'VIDEO') {
-            slides[currentSlide].play();
+            playVideo(slides[currentSlide]);
         }
         if (slideshowTitle) {
             slideshowTitle.textContent = dots[currentSlide].dataset.title;

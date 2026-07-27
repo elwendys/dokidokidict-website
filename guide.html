@@ -4,17 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide - DokiDokiDict</title>
-    <meta name="description" content="Complete guide to DokiDokiDict. Scan modes, furigana, pitch accent, AI ranking, dictionaries, SRS, Anki export, i+1 detection, stats, achievements, and more.">
+    <title>DokiDokiDict Guide: OCR, Furigana, SRS and Recommender</title>
+    <meta name="description" content="Set up DokiDokiDict for Japanese OCR lookups, furigana and pitch accent, dictionaries, Anki, built-in SRS, i+1 detection, word tracking, and recommendations.">
     <link rel="canonical" href="https://dokidokidict.com/guide.html">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://dokidokidict.com/guide.html">
-    <meta property="og:title" content="Guide - DokiDokiDict">
-    <meta property="og:description" content="Complete guide to DokiDokiDict. Scan modes, furigana, pitch accent, AI ranking, dictionaries, SRS, Anki export, i+1 detection, stats, achievements, and more.">
+    <meta property="og:title" content="DokiDokiDict Guide: OCR, Furigana, SRS and Recommender">
+    <meta property="og:description" content="Set up Japanese OCR lookups, furigana, pitch accent, dictionaries, Anki, SRS, i+1 detection, word tracking, and the reading recommender.">
     <meta property="og:image" content="https://dokidokidict.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +25,29 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="guide.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "TechArticle",
+                "@id": "https://dokidokidict.com/guide.html",
+                "headline": "DokiDokiDict Guide",
+                "description": "Complete setup and feature guide for DokiDokiDict.",
+                "dateModified": "2026-07-24",
+                "author": {"@type": "Organization", "name": "DokiDokiDict"},
+                "isPartOf": {"@id": "https://dokidokidict.com/#website"}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "DokiDokiDict", "item": "https://dokidokidict.com/"},
+                    {"@type": "ListItem", "position": 2, "name": "Guide", "item": "https://dokidokidict.com/guide.html"}
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -37,6 +62,7 @@
         <div class="nav-links">
             <a href="quickstart.html">Quick Start</a>
             <a href="guide.html" style="color: var(--text-primary);">Guide</a>
+            <a href="recommender.html">Recommender</a>
             <a href="https://discord.gg/tUp4hKbFaC" target="_blank">Discord</a>
             <a href="index.html#download">Download</a>
         </div>
@@ -49,6 +75,10 @@
             <a href="#getting-started">Getting Started</a>
             <a href="#scan-modes">Scan Modes</a>
             <a href="#looking-up-words">Looking Up Words</a>
+
+            <div class="sidebar-section">Recommender</div>
+            <a href="#recommender">Recommender Gallery</a>
+            <a href="#recommender-ranking">Ranking & Planning</a>
 
             <div class="sidebar-section">Furigana & Pitch</div>
             <a href="#furigana">Furigana Overlays</a>
@@ -79,6 +109,7 @@
             <a href="#achievements">Achievements</a>
 
             <div class="sidebar-section">Reference</div>
+            <a href="#learning-statistics">Learning Statistics</a>
             <a href="#hotkeys">Hotkey Reference</a>
             <a href="#settings">Settings Overview</a>
         </aside>
@@ -97,11 +128,37 @@
                 <li>Click the green <strong>Start</strong> button.</li>
                 <li>Hold <kbd>Shift</kbd> and point your cursor at Japanese text. A popup appears with definitions.</li>
             </ol>
-            <p>That's it. Dictionary lookups, OCR, and MeCab furigana all work offline with no configuration. AI features (definition ranking, AI furigana) require a Gemini API key, see <a href="#ai-features">AI Features</a>.</p>
+            <p>That's it. Dictionary lookup and MeCab furigana run locally. The default Google Lens OCR provider needs internet; switch to meikiocr when you need OCR to work offline. AI definition ranking and AI furigana require a Gemini API key, see <a href="#ai-features">AI Features</a>.</p>
 
             <div class="info-box tip">
                 <p>If nothing happens when you hold Shift, make sure the backend is running (green dot in the status bar) and your scan mode target is set correctly.</p>
             </div>
+
+            <!-- Recommender -->
+            <h2 id="recommender">Recommender Gallery</h2>
+            <p>The Recommender Gallery finds works that fit what you know now and estimates what you can learn from reading them. It can combine your DokiDokiDict reading history, Anki cards, and built-in SRS deck, then run the same reading simulation across every work matching your filters.</p>
+
+            <ol class="guide-steps">
+                <li>Open the <strong>Recommender</strong> tab in DokiDokiDict.</li>
+                <li>Click <strong>Open Recommender Gallery</strong>. The public gallery connects to the hosted catalog.</li>
+                <li>Filter by title, work type, or page range.</li>
+                <li>Choose a frequency list and open <strong>Simulation</strong> to decide what counts as known and how words graduate while reading.</li>
+                <li>Use <strong>Rank</strong> for the best next work or <strong>Plan</strong> for an ordered reading sequence.</li>
+            </ol>
+
+            <h3>Simulation Settings</h3>
+            <p>The simulation can treat words as known from mature Anki cards, any Anki or SRS card, words marked purple or green in the gallery, words seen at least N times, or loanwords. You can also set how many sightings and separate pages a word needs before it graduates during a read, treat character names as known, and enable the 20-word leeway option.</p>
+
+            <h3 id="recommender-ranking">Ranking and Planning</h3>
+            <ul>
+                <li><strong>Rank</strong> answers “What should I read next?” Pick an objective, then rank every visible work. Objectives include entering comprehension, vocabulary graduations, and i+N material.</li>
+                <li><strong>Plan</strong> builds a sequence. You can maximize progress within a page budget or minimize the reading needed to reach a target.</li>
+                <li><strong>Mark as virtually read</strong> simulates finishing selected works before the next ranking, so you can test possible routes without changing your real learning data.</li>
+            </ul>
+
+            <h3>Work Analysis</h3>
+            <p>Select a cover to open its details. After ranking, the <strong>Analysis</strong> tab lets you move from 0% to 90% through the work and see how recognition changes as vocabulary repeats and graduates. The <strong>Words</strong> tab shows the underlying vocabulary and lets you hide known words or loanwords.</p>
+            <p>For a conceptual explanation, see <a href="recommender.html">how the personalized reading recommender works</a>. You can also browse the <a href="works/index.html">aggregate work statistics</a> and the <a href="analysis/30-percent-rule.html">30% staircase analysis</a> on the website.</p>
 
             <!-- Scan Modes -->
             <h2 id="scan-modes">Scan Modes</h2>
@@ -207,6 +264,15 @@
                 <li>In the <strong>Shortcuts</strong> tab, set the lookup hotkey for the new profile.</li>
             </ol>
 
+            <h3>Popup Display and Entry Ordering</h3>
+            <p>Each profile can control how its own popup is presented:</p>
+            <ul>
+                <li><strong>Rank entries by frequency list order</strong> uses a frequency list you choose to order otherwise matching entries. When the list cannot distinguish them, ordering falls back to dictionary priority.</li>
+                <li><strong>Show frequency rank</strong> adds a frequency badge. <strong>Color headwords by VN frequency</strong> colors the word at the top of the popup according to its VN frequency rank. <strong>Configure colors</strong> lets you choose the rank ranges and the headword color used for each.</li>
+                <li><strong>Show word types</strong> can display labels such as ichidan verb or na-adjective. <strong>Choose types</strong> lets you hide labels you do not need.</li>
+                <li><strong>Show conjugations</strong> adds the detected conjugation beside the word's reading in the popup. <strong>Choose conjugations</strong> controls which forms are shown.</li>
+            </ul>
+
             <!-- Intra-popup Lookups -->
             <h2 id="intra-popup">Intra-popup Lookups</h2>
             <p>You can lock a popup in place and look up words inside the definition text. If you're using monolingual (J-J) dictionaries this is essential, since the definitions themselves will have words you don't know.</p>
@@ -260,13 +326,14 @@
 
             <!-- Built-in SRS -->
             <h2 id="srs">Built-in SRS</h2>
-            <p>DokiDokiDict has its own spaced repetition system using the FSRS-4.5 algorithm. It works standalone, you don't need Anki.</p>
+            <p>DokiDokiDict has its own spaced repetition system using FSRS. It works standalone, you don't need Anki.</p>
 
             <h3>Adding Cards</h3>
             <p>Hold your lookup hotkey and press <kbd>S</kbd>. The card gets the word, reading, definition, pitch accent, the sentence you're reading, and a screenshot. The popup shows <strong>S&#10003;</strong> when it's added. If the word is already in your deck it shows <strong>S&#8712;</strong>.</p>
 
             <h3>Reviewing</h3>
             <p>Go to the <strong>SRS</strong> tab, <strong>Review</strong> sub-tab. Cards show the word on the front, click <strong>Show Answer</strong> to see everything (reading, definition, sentence, image). Grade yourself: Again, Hard, Good, or Easy.</p>
+            <p>If a card is conventionally written in kana but was saved with kanji, right-click the word on the front or back and choose <strong>Hiragana word</strong>. This changes that card's displayed expression to its reading without resetting its review history.</p>
 
             <h3>Deck Browser</h3>
             <p>The <strong>Deck Browser</strong> sub-tab shows all your cards. You can filter by All, Due, New, Learning, Suspended, or Pending. Right-click a card to suspend, unsuspend, or delete.</p>
@@ -277,14 +344,16 @@
                 <li><strong>New cards per day</strong> (default: 20)</li>
                 <li><strong>Max reviews per day</strong> (default: 200)</li>
                 <li><strong>Learning steps</strong> (default: <code>1,10</code>). These are minutes between learning-phase reviews, comma-separated. So <code>1,10</code> means the card shows again after 1 minute, then again after 10 minutes, then graduates to a normal review card.</li>
+                <li><strong>Desired retention</strong> (default: 90%). This is the recall probability FSRS targets when it schedules a review. Higher values produce shorter intervals and more reviews; lower values allow longer intervals.</li>
             </ul>
 
             <!-- Auto-Add & Test-Before-Add -->
             <h2 id="srs-auto-add">Auto-Add & Test-Before-Add</h2>
-            <p>You can have words you've looked up often enough get added to your deck automatically. Enable <strong>Automatically add with occurrence count &#8805; N</strong> in the SRS settings and set your threshold (say 5, meaning any word you've looked up 5+ times gets added).</p>
+            <p>You can have words encountered often enough get added to your deck automatically. Enable <strong>Automatically add with occurrence count &#8805; N</strong> in the SRS settings and set your threshold (say 5, meaning an eligible word can be mined after five spaced sightings).</p>
+            <p><strong>Use sentence context to choose auto-mined readings</strong> is enabled by default. It uses the reading in the sentence that triggered mining to choose the matching dictionary entry, preventing ambiguous spellings and homophones from producing the wrong card.</p>
 
             <h3>Test-Before-Add</h3>
-            <p>If you enable test-before-add, auto-added words don't go straight into your deck. They go into a pending state. A few pages later (you set the delay, default 5 pages), the app surprise-quizzes you on the word. If you knew it, the card gets added. If you didn't, it gets dropped. There's no "quiz pending" notification, the surprise is the point.</p>
+            <p>If you enable test-before-add, auto-added words don't go straight into your deck. They go into a pending state. A few pages later (you set the delay, default 5 pages), the app surprise-quizzes you on the word. If you knew it, the card gets added. If you didn't, it gets dropped.</p>
 
             <!-- Inline Review -->
             <h2 id="srs-inline">Review While Reading</h2>
@@ -305,14 +374,10 @@
 
             <!-- AI Features -->
             <h2 id="ai-features">AI Features</h2>
-            <p>DokiDokiDict uses Google's Gemini API for definition ranking, reading disambiguation, and context-aware furigana. All AI features are optional, the app works fully offline without an API key, you just won't have AI definition ranking or AI furigana.</p>
+            <p>DokiDokiDict can use Google's Gemini API for definition ranking, reading disambiguation, and context-aware furigana. These features are optional. Dictionary lookup, MeCab furigana, the built-in SRS, and OCR do not require an API key.</p>
 
-            <h3>Getting a Free Gemini API Key</h3>
-            <p>New Google Cloud accounts get $300 in free credits. Sign up at <a href="https://cloud.google.com/free" target="_blank">cloud.google.com/free</a>, create a Gemini API key, and paste it into DokiDokiDict's <strong>AI Settings</strong> tab. The $300 credit gives you higher rate limits and is the recommended approach.</p>
-
-            <div class="info-box tip">
-                <p><strong>Alternative:</strong> You can also get a free API key from <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a> without signing up for Google Cloud. The free tier has lower rate limits but works fine for lighter use.</p>
-            </div>
+            <h3>Getting a Gemini API Key</h3>
+            <p>Create an API key in <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a>, then paste it into DokiDokiDict's <strong>AI Settings</strong> tab. At the time this guide was last updated (July 2026), Google still offered a generous free tier. Availability, quotas, and pricing may change, so check the official <a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank">Gemini API pricing page</a> before enabling continuous or bulk use.</p>
 
             <h3>AI Definition Ranking</h3>
             <p>Many Japanese words have lots of meanings. <span style="font-family:'Noto Sans JP'">&#25499;&#12369;&#12427;</span> alone has over a dozen. When enabled, Gemini reads the surrounding context and reorders the definitions so the most relevant one is on top.</p>
@@ -335,13 +400,13 @@
 
             <!-- Word Tracking -->
             <h2 id="word-tracking">Word Tracking</h2>
-            <p>DokiDokiDict tracks how often you encounter each word. Every time you look up a word, its count goes up. The popup shows a frequency badge (&#215;2, &#215;3, etc.) next to the word so you can see at a glance how many times you've run into it.</p>
+            <p>DokiDokiDict counts how often you encounter words while reading, as well as words you actively look up. The popup shows a frequency badge (&#215;2, &#215;3, etc.) next to the word so you can see how many times it has counted as a new sighting.</p>
 
             <p>You can configure this in the <strong>Anki</strong> tab under <strong>Word Frequency</strong>:</p>
             <ul>
                 <li><strong>Track lookups</strong> (on by default): Counts words you actively look up.</li>
-                <li><strong>Track all words</strong> (off by default): Counts every word in every scanned paragraph, not just lookups.</li>
-                <li><strong>Minimum page spacing</strong> (default 1): A word only counts as a new sighting if at least this many pages (1 page = 600 characters) have passed since the last time. This prevents inflated counts from seeing the same word multiple times on one page.</li>
+                <li><strong>Track all words</strong> (on by default): Counts every word you encounter while reading, whether or not you look it up.</li>
+                <li><strong>Minimum page spacing</strong> (default 5): A word only counts as a new sighting if at least this many pages (1 page = 600 characters) have passed since its last qualifying sighting. This prevents repeated text in the same scene from inflating the count and gives the word time to leave short-term memory, making the next occurrence a more meaningful new sighting.</li>
             </ul>
 
             <!-- i+1 Sentence Detection -->
@@ -425,6 +490,12 @@
 
             <p>Toast notifications pop up when you unlock a new milestone. You can toggle these in the Achievements tab.</p>
 
+            <!-- Learning Statistics -->
+            <h2 id="learning-statistics">Learning Statistics</h2>
+            <p>The first time you open a profile, DokiDokiDict asks whether you want to share learning statistics. If you agree, the app can send reading volume and timing, words and kanji encountered, dictionary lookups, SRS and Anki progress, reading sources, and relevant learning settings. This data helps improve recommendations and default settings and may later be included in de-identified research datasets.</p>
+            <p>DokiDokiDict does not collect OCR text, screenshots, audio, mined sentences, definitions, filenames, account details, or contact information. Shared data is associated only with a random installation ID.</p>
+            <p>You can change your choice later with <strong>Share learning statistics to help improve DokiDokiDict</strong> in the <strong>General</strong> tab.</p>
+
             <!-- Hotkey Reference -->
             <h2 id="hotkeys">Hotkey Reference</h2>
             <p>All hotkeys are configurable in the <strong>Shortcuts</strong> tab. To change one, click the button next to it and press your new key. These are the defaults:</p>
@@ -507,18 +578,19 @@
                     <tr><th>Tab</th><th>What's There</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td><strong>General</strong></td><td>Scan mode, target selection, OCR provider, auto-scan, Magpie compatibility</td></tr>
+                    <tr><td><strong>General</strong></td><td>Scan mode, target selection, OCR provider, auto-scan, Magpie compatibility, learning-statistics choice</td></tr>
                     <tr><td><strong>AI Settings</strong></td><td>Gemini API key, ranking/furigana models, enable toggles, continuous ranking</td></tr>
                     <tr><td><strong>Furigana</strong></td><td>Furigana color, size, X/Y position offsets, reset-to-defaults button</td></tr>
                     <tr><td><strong>Pitch Accent</strong></td><td>Enable pitch accent display on the furigana overlay, high/low/heiban marker colors</td></tr>
                     <tr><td><strong>Anki</strong></td><td>AnkiConnect settings, deck/note type, field mapping (9 fields), word frequency tracking, i+1 detection, recall</td></tr>
-                    <tr><td><strong>SRS</strong></td><td>New cards/day, max reviews, learning steps, auto-add, test-before-add, review while reading, pitch on cards</td></tr>
+                    <tr><td><strong>SRS</strong></td><td>New cards/day, max reviews, learning steps, desired retention, contextual auto-mining, test-before-add, review while reading, pitch on cards</td></tr>
                     <tr><td><strong>Dictionary</strong></td><td>JMdict toggle, Yomichan dictionary import/management</td></tr>
-                    <tr><td><strong>Profiles</strong></td><td>Create/edit/delete profiles, per-profile dictionaries, hotkeys, intra-popup depth</td></tr>
+                    <tr><td><strong>Profiles</strong></td><td>Create/edit/delete profiles, per-profile dictionaries, frequency ordering and colors, word types, conjugations, intra-popup depth</td></tr>
                     <tr><td><strong>Shortcuts</strong></td><td>All hotkey configuration (per-profile and global)</td></tr>
                     <tr><td><strong>History</strong></td><td>Text history log (everything the app has captured while you read), refresh, copy, clear</td></tr>
                     <tr><td><strong>Stats</strong></td><td>Kanji coverage, VN word coverage, kanji grid, vocabulary, reading volume, reading streaks</td></tr>
                     <tr><td><strong>Achievements</strong></td><td>139 milestone cards, notification toggle</td></tr>
+                    <tr><td><strong>Recommender</strong></td><td>Open the hosted gallery to rank works, plan reading sequences, and inspect detailed simulations</td></tr>
                 </tbody>
             </table>
 
